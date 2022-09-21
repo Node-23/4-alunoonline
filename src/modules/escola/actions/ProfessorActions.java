@@ -55,22 +55,14 @@ public class ProfessorActions extends CrudActions {
             tipoFiltro = TipoFiltroProfessorTurmaEnum.valueOf(tipoFiltroName);
         }catch (Exception ignored){}
 
-//        Turma turma = Is.selected(turmaId)? Dao.getInstance().get(Turma.class, turmaId) : null;
-//
-//        List<Aluno> alunos = AlunoDao.listByTurmaIdAndTipoFiltro(turma, tipoFiltro);
-//
-//        List<Turma> turmas = TurmaDao.listAll();
         TipoFiltroProfessorTurmaEnum[] opcoesFiltroTurma = TipoFiltroProfessorTurmaEnum.values();
 
         // lista principal...
         output("professores", ProfessoresFiltrados(tipoFiltro));
 
-//        // dependencias de filtragem
-//      output("turmas", turmas);
+        // dependencias de filtragem
         output("opcoesFiltroTurma", opcoesFiltroTurma);
-//
-//        //filtros selecionados
-//      output("turma", turma); //turma filtrada
+        //filtros selecionados
         output("tipoFiltro", tipoFiltro); //filtro tipo turma realizado
         return SUCCESS;
     }
