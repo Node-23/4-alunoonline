@@ -73,6 +73,7 @@
 	                    <th data-field="codigo">CÓDIGO</th>
 	                    <th data-field="nome">NOME</th>
 	                    <th data-field="tipo">TIPO</th>
+						<th data-field="professor">PROFESSOR</th>
 	                    <th data-field="total-alunos">TOTAL DE ALUNOS</th>
 		                <th data-field="representante">REPRESENTANTE</th>
 		                <th data-field="lista-alunos" data-visible="false">LISTA DE ALUNOS</th>

@@ -36,7 +36,7 @@ public class AlunoValidator extends Validator {
             error("Selecione uma turma.");
         }
 
-		if(foto==null && type.equals(CREATE)){
+		if(foto==null){ //&& type.equals(CREATE)){
 			error("A foto 3x4 é obrigatória.");
 		}else if(!foto.getContentType().equals("image/jpeg")){
 			error("A foto precisa ser JPG válida.");

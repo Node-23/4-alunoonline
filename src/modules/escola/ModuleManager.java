@@ -1,8 +1,10 @@
 package modules.escola;
 
 import modules.escola.actions.AlunoActions;
+import modules.escola.actions.ProfessorActions;
 import modules.escola.actions.TurmaActions;
 import modules.escola.beans.Aluno;
+import modules.escola.beans.Professor;
 import modules.escola.beans.TipoTurma;
 import modules.escola.beans.Turma;
 import org.futurepages.menta.core.control.AbstractModuleManager;
@@ -81,6 +83,7 @@ public class ModuleManager extends AbstractModuleManager {
             .filter(new VOFilter("turma", Turma.class))
             .filter(new PIFilter("turma","tipo", TipoTurma.class))
             .filter(new PIFilter("turma","representante", Aluno.class))
+            .filter(new PIFilter("turma", "professor", Professor.class))
 
             // se chamar Turma?type=create, o método execute será chamado, e
             // a consequência do método deverá mandar o resultado do output
@@ -107,5 +110,17 @@ public class ModuleManager extends AbstractModuleManager {
             .on(SUCCESS, UPDATE, chainIn("Turma?type=explore"))
 
             .on(SUCCESS, DELETE, chainIn("Turma?type=explore"));
+
+        action("Professor", ProfessorActions.class)
+                .filter(new VOFilter("professor", Professor.class))
+                .on(CREATE, fwIn("Professor-create.page"))
+                .on(SUCCESS, CREATE, chainIn("Professor?type=explore"))
+                .on(ERROR,   CREATE, fwIn("Professor-create.page"))
+                .on(EXPLORE, fwIn("Professor-explore.page"))
+                .on(SUCCESS, EXPLORE, fwIn("Professor-explore.page"))
+                .on(UPDATE, fwIn("Professor-update.page"))
+                .on(SUCCESS, UPDATE, chainIn("Professor?type=explore"))
+                .on(ERROR, UPDATE, fwIn("Professor-update.page"))
+                .on(SUCCESS, DELETE, chainIn("Professor?type=explore"));
     }
 }

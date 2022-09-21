@@ -27,6 +27,10 @@ public class TurmaValidator extends Validator {
             error("Já existe uma turma com esse representante.");
         }
 
+        if(turma.getProfessor() == null){
+            error("Selecione um professor");
+        }
+
 	    if(turma.getTipo()==null){
             error("Informe o tipo da turma.");
 	    }
