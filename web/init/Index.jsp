@@ -22,6 +22,10 @@
     <a href="<fpg:contextPath/>/escola/Aluno?type=explore">Listar Alunos</a>
     <br/>
     <br/>
+    <a href="<fpg:contextPath/>/escola/Professor?type=create">Novo Professor</a>
+    <br/>
+    <br/>
+    <a href="<fpg:contextPath/>/escola/Professor?type=explore">Listar Professores</a>
     <br/>
     <br/>
 </div>

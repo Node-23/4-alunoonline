@@ -1,6 +1,9 @@
 package install.escola;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import install.Resources;
@@ -75,8 +78,12 @@ public class Alunos implements Installation {
 			aluno.setTurma(turma);
 			turma.setRepresentante(aluno);
 		}
-
 		Dao.getInstance().save(aluno);
-		FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res/" + aluno.getId() + ".jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "/alunos/" + aluno.getId()+".jpg");
+		Path path = Paths.get(FileUtil.classRealPath(this.getClass()) + "res/alunos/" + aluno.getId() + ".jpg");
+		if(Files.notExists(path)){
+			FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res/Default.jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "/alunos/" + aluno.getId()+".jpg");
+		}else{
+			FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res/alunos/" + aluno.getId() + ".jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "/alunos/" + aluno.getId()+".jpg");
+		}
 	}
 }

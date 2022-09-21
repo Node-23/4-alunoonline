@@ -1,7 +1,6 @@
 package modules.escola.dao;
 
 import modules.escola.beans.Aluno;
-import modules.escola.beans.TipoTurma;
 import modules.escola.beans.Turma;
 import modules.escola.enums.TipoFiltroAlunoTurmaEnum;
 import org.futurepages.core.persistence.Dao;

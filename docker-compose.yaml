@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql:5-debian
+    command:
+      --transaction-isolation=READ-COMMITTED
+    restart: always
+    container_name: mysql_aluno_online
+    environment:
+      MYSQL_DATABASE: alunoonlinebd
+      MYSQL_USER: root
+      MYSQL_PASSWORD: masterx
+      MYSQL_ROOT_PASSWORD: masterx
+    ports:
+      - "3306:3306"
+    volumes:
+      - alunodb:/var/lib/mysql
+volumes:
+  alunodb:

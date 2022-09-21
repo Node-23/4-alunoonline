@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Turma  implements Serializable {
+public class Turma implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,6 +42,9 @@ public class Turma  implements Serializable {
     @ManyToOne
     private Aluno representante;
 
+    @ManyToOne
+    private Professor professor;
+
     public Turma() {
     }
 
@@ -54,6 +57,13 @@ public class Turma  implements Serializable {
         setCodigo(codigo);
         setNome(nome);
         setRepresentante(representante);
+    }
+
+    public Turma(String codigo, String nome, Aluno representante, Professor professor) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.representante = representante;
+        this.professor = professor;
     }
 
     public void setCodigo(String codigo) {
@@ -103,15 +113,22 @@ public class Turma  implements Serializable {
     public Aluno getRepresentante() {
         return representante;
     }
+    public Professor getProfessor() {return professor;}
+    public void setProfessor(Professor professor) {this.professor = professor;}
 
     public long getTotalAlunos() {
         return TurmaDao.getTotalAlunosPara(this);
+    }
+
+    public void RemoverProfessor(){
+        this.professor = null;
     }
 
     public void fillFromForm(Turma turmaForm) {
         this.setNome(turmaForm.getNome());
         this.setCodigo(turmaForm.getCodigo());
         this.setTipo(turmaForm.getTipo());
+        this.setProfessor(turmaForm.getProfessor());
         this.setRepresentante(turmaForm.getRepresentante());
     }
 }

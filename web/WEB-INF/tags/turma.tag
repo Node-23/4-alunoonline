@@ -8,6 +8,7 @@
 	<td>${turma.codigo}</td>
 	<td>${turma.nome}</td>
 	<td>${turma.tipo.nome}</td>
+	<td>${turma.professor.nomeCompleto}</td>
 	<td>${turma.totalAlunos}</td>
 	<td>${turma.representante.nomeCompleto}</td>
 	<td>
