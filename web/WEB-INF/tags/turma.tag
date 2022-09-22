@@ -22,6 +22,6 @@
 	</td>
 	<td colspan="2">
 		<a class="btn btn-warning" href="<fpg:contextPath/>/escola/Turma?type=update&id=${turma.id}">editar</a>
-		<a class="btn btn-danger" href="javascript:confirmaExclusao('${turma.id}', '${turma.codigo}', '${turma.nome}');" >apagar</a>
+		<a class="btn btn-danger" href="javascript:confirmaExclusao('${turma.id}', '${turma.codigo}', '${turma.nome}', '${turma.curso == null}');" >apagar</a>
 	</td>
 </tr>
