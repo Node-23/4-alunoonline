@@ -10,6 +10,12 @@
 	</h2>
     <br/>
     <br/>
+    <a href="<fpg:contextPath/>/escola/Curso?type=create" >Novo Curso</a>
+    <br/>
+    <br/>
+    <a href="<fpg:contextPath/>/escola/Curso?type=explore" >Listar Cursos</a>
+    <br/>
+    <br/>
     <a href="<fpg:contextPath/>/escola/Turma?type=create" >Nova Turma</a>
     <br/>
     <br/>

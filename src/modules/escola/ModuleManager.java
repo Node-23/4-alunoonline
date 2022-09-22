@@ -2,11 +2,13 @@ package modules.escola;
 
 import modules.escola.actions.AlunoActions;
 import modules.escola.actions.ProfessorActions;
+import modules.escola.actions.CursoActions;
 import modules.escola.actions.TurmaActions;
 import modules.escola.beans.Aluno;
 import modules.escola.beans.Professor;
 import modules.escola.beans.TipoTurma;
 import modules.escola.beans.Turma;
+import modules.escola.beans.*;
 import org.futurepages.menta.core.control.AbstractModuleManager;
 import org.futurepages.menta.filters.PIFilter;
 import org.futurepages.menta.filters.VOFilter;
@@ -25,7 +27,7 @@ public class ModuleManager extends AbstractModuleManager {
             // ao campo da action com o nome "aluno".
             .filter(new VOFilter("aluno", Aluno.class))
 
-            // PIFIlter: recupeda do banco uma "turma" de acordo com o id
+            // PIFIlter: recupera do banco uma "turma" de acordo com o id
             // adquirida no formulário e insere-o em um objeto "aluno".
             // Retirando assim, esta tarefa do programador.
             .filter(new PIFilter("aluno", "turma", Turma.class))
@@ -83,6 +85,8 @@ public class ModuleManager extends AbstractModuleManager {
             .filter(new VOFilter("turma", Turma.class))
             .filter(new PIFilter("turma","tipo", TipoTurma.class))
             .filter(new PIFilter("turma","representante", Aluno.class))
+            .filter(new PIFilter("turma","curso", Curso.class))
+
             .filter(new PIFilter("turma", "professor", Professor.class))
 
             // se chamar Turma?type=create, o método execute será chamado, e
@@ -122,5 +126,42 @@ public class ModuleManager extends AbstractModuleManager {
                 .on(SUCCESS, UPDATE, chainIn("Professor?type=explore"))
                 .on(ERROR, UPDATE, fwIn("Professor-update.page"))
                 .on(SUCCESS, DELETE, chainIn("Professor?type=explore"));
+
+
+        action("Curso", CursoActions.class)
+
+                //VOFilter: pega os valores dos campos do formulário da visão e
+                // casa-os com os atributos da classe Curso.class, instancia um
+                // objeto deste tipo e insere os valores dos campos do formulário
+                // nas respectivas propriedades, o objeto preenchido é atribuido
+                // ao campo da action com o nome "turma".
+                .filter(new VOFilter("curso", Curso.class))
+                .filter(new PIFilter("curso","tipo", TipoCurso.class))
+
+                // se chamar Curso?type=create, o método execute será chamado, e
+                // a consequência do método deverá mandar o resultado do output
+                // (fwIn) para a tela de criação de turmas dentro do módulo
+                // (com o template montado)
+                .on(CREATE, fwIn("Curso-create.page"))
+
+                // se ocorrer sucesso na criação de curso vai para a tela de
+                // listagem dos cursos cadastrados
+                .on(SUCCESS, CREATE, chainIn("Curso?type=explore"))
+
+                // se ocorrer error na criacao do curso volta para a tela de
+                // criação de curso
+                .on(ERROR, CREATE, fwIn("Curso-create.page"))
+
+                // Curso?type=explore ocorre o redirecionamento para a tela
+                // de listagem dos cursos cadastrados no sistema
+                .on(EXPLORE, fwIn("Curso-explore.page"))
+
+                // Se type for igual a UPDATE a consequência será a tela
+                // de atualização
+                .on(UPDATE, fwIn("Curso-update.page"))
+
+                .on(SUCCESS, UPDATE, chainIn("Curso?type=explore"))
+
+                .on(SUCCESS, DELETE, chainIn("Curso?type=explore"));
     }
 }

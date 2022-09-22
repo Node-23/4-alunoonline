@@ -21,4 +21,11 @@ public class TiposTurmaInstaller extends Installer{
 	    Dao.getInstance().save(new TipoTurma("Turma Pré-Matutino"));
 	    Dao.getInstance().save(new TipoTurma("Turma Integral"));
     }
+
+	public static void main(String[] args) {
+		Dao.getInstance().beginTransaction();
+		new TiposTurmaInstaller();
+		Dao.getInstance().commitTransaction();
+		Dao.getInstance().close();
+	}
 }
