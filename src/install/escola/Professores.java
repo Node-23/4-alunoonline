@@ -27,11 +27,11 @@ public class Professores implements Installation {
     private void installProfessor(String matricula, String nome) throws IOException {
         Professor professor = new Professor(matricula, nome);
         Dao.getInstance().save(professor);
-        Path path = Paths.get(FileUtil.classRealPath(this.getClass()) + "res/professores/" + professor.getId() + ".jpg");
+        Path path = Paths.get(FileUtil.classRealPath(this.getClass()) + "res\\professores\\" + professor.getId() + ".jpg");
         if(Files.notExists(path)){
-            FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res/Default.jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "/professores/" + professor.getId()+".jpg");
+            FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res\\Default.jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "\\professores\\" + professor.getId()+".jpg");
         }else{
-            FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res/professores/" + professor.getId() + ".jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "/professores/" + professor.getId()+".jpg");
+            FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res\\professores\\" + professor.getId() + ".jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "\\professores\\" + professor.getId()+".jpg");
         }
     }
 }

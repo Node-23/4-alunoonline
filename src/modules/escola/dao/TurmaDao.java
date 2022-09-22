@@ -2,10 +2,10 @@ package modules.escola.dao;
 
 import modules.escola.beans.Aluno;
 import modules.escola.beans.Turma;
-import modules.escola.enums.TipoFiltroTurmaRepresentanteEnum;
+import modules.escola.enums.TipoFiltroTurmaEnum;
 import org.futurepages.core.persistence.Dao;
 import org.futurepages.core.persistence.HQLProvider;
-
+import modules.escola.beans.Curso;
 import java.util.List;
 
 
@@ -50,7 +50,7 @@ public class TurmaDao extends HQLProvider {
 		return Dao.getInstance().list(hql(Turma.class, field("nome").matches(busca)));
 	}
 
-	public static Object listByWithFilter(String busca, TipoFiltroTurmaRepresentanteEnum tipoFiltro) {
+	public static Object listByWithFilter(String busca, TipoFiltroTurmaEnum tipoFiltro) {
 		return Dao.getInstance().list(hql(Turma.class,
 						ands(
 								busca!=null? field("nome").matches(busca) : "",
@@ -60,4 +60,5 @@ public class TurmaDao extends HQLProvider {
 				)
 		);
 	}
+
 }

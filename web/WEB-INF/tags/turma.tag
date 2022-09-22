@@ -1,9 +1,10 @@
 <%@tag pageEncoding="UTF-8" %>
 <%@taglib uri="futurepagesApp" prefix="fpg"%>
-
+<%--@elvariable id="aluno" type="modules.escola.beans.Curso"--%>
 <%@attribute name="turma" type="modules.escola.beans.Turma"  required="true"%>
 
 <tr>
+	<td>${turma.curso.nome}</td>
 	<td>${turma.id}</td>
 	<td>${turma.codigo}</td>
 	<td>${turma.nome}</td>

@@ -4,14 +4,14 @@
 
 	<param name="PAGE_ENCODING"	value="UTF-8"/>
 
-<!--	<param name="SCHEMA_GENERATION_TYPE"    value="export"/>-->
-<!--	<param name="INSTALL_MODE"              value="on"/>-->
+	<param name="SCHEMA_GENERATION_TYPE"    value="export"/>
+	<param name="INSTALL_MODE"              value="on"/>
 
 	<param name="SCHEMA_GENERATION_TYPE"    value="update_beans"/>
 
-	<param name="APP_HOST"    value="http://localhost/alunoonline"/>
+	<param name="APP_HOST"    value="http://localhost:8080/alunoonline"/>
 
-	<param name="UPLOADS_REAL_PATH"   value="/var/www/html/alunoonline_uploads"/>
+	<param name="UPLOADS_REAL_PATH"   value="C:\wamp64\www\alunoonline_uploads"/>
 	<param name="UPLOADS_URL_PATH"    value="http://localhost/alunoonline_uploads"/>
 
 

@@ -24,7 +24,7 @@
             <input class="form-control" id="nome" name="nome" value="${turma.nome}" />
         </div>
         <div class="form-group">
-            <label for="codigo">Turma</label>
+            <label for="codigo">Códido da Turma</label>
             <input class="form-control" id="codigo" name="codigo" value="${turma.codigo}" />
         </div>
         <div class="form-group">

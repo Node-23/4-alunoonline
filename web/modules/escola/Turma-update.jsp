@@ -18,8 +18,9 @@
     <br />
     <form method="post" action="<fpg:contextPath/>/escola/Turma-update" enctype="multipart/form-data">
         <%--@elvariable id="turma" type="modules.escola.beans.Turma"--%>
+        <%--@elvariable id="turma" type="modules.escola.beans.Curso"--%>
         <input name="id" value="${turma.id}" type="hidden" />
-        Código: <input id="codigo" name="codigo" value="${turma.codigo}" />
+        Código da Turma: <input id="codigo" name="codigo" value="${turma.codigo}" />
         <br />
         <br />
         Nome: <input id="nome" name="nome" value="${turma.nome}" />
@@ -30,6 +31,9 @@
         <br />
         Representante:
         <fpg:Select list="alunos" name="representante" defaultText="Selecione..." defaultValue="0" selected="${turma.representante.id}" showAttr="nomeCompleto"/>
+        <br />
+        <br />
+        Curso: <fpg:Select list="cursos" defaultText="Selecione..." defaultValue="0" name="curso" selected="${curso.id}" showAttr="nome"/>
         <br />
         <br />
             <div style="padding: 20px">

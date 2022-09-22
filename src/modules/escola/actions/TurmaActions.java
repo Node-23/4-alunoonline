@@ -1,13 +1,13 @@
 package modules.escola.actions;
 
 import modules.escola.Service.TurmaService;
-import modules.escola.beans.Aluno;
 import modules.escola.beans.Turma;
 import modules.escola.dao.AlunoDao;
+import modules.escola.dao.CursoDao;
 import modules.escola.dao.ProfessorDao;
 import modules.escola.dao.TipoTurmaDao;
 import modules.escola.dao.TurmaDao;
-import modules.escola.enums.TipoFiltroTurmaRepresentanteEnum;
+import modules.escola.enums.TipoFiltroTurmaEnum;
 import modules.escola.validators.TurmaValidator;
 import org.futurepages.core.persistence.Dao;
 import org.futurepages.core.persistence.annotations.Transactional;
@@ -33,6 +33,7 @@ public class TurmaActions extends CrudActions {
 		output("tipos", TipoTurmaDao.listAll());
 		output("alunos", AlunoDao.listByTurmaId(turma.getId()));
 		output("professores", ProfessorDao.listAll());
+		output("cursos", CursoDao.listAll());
 	}
 
     public String create() {
@@ -63,15 +64,15 @@ public class TurmaActions extends CrudActions {
 
 
 	public String explore(String busca, String tipoFiltro){
-		TipoFiltroTurmaRepresentanteEnum tipoFiltroTurmaRepresentanteEnum = null;
+		TipoFiltroTurmaEnum tipoFiltroTurmaEnum = null;
 		try {
-			tipoFiltroTurmaRepresentanteEnum = TipoFiltroTurmaRepresentanteEnum.valueOf(tipoFiltro);
+			tipoFiltroTurmaEnum = TipoFiltroTurmaEnum.valueOf(tipoFiltro);
 		}catch (Exception ignored){}
 
-		output("turmas", TurmaDao.listByWithFilter(busca, tipoFiltroTurmaRepresentanteEnum));
+		output("turmas", TurmaDao.listByWithFilter(busca, tipoFiltroTurmaEnum));
 		output("busca",busca);
 
-		TipoFiltroTurmaRepresentanteEnum[] opcoesFiltroTurma = TipoFiltroTurmaRepresentanteEnum.values();
+		TipoFiltroTurmaEnum[] opcoesFiltroTurma = tipoFiltroTurmaEnum.values();
 		output("opcoesFiltroTurma", opcoesFiltroTurma);
 		return SUCCESS;
 	}

@@ -1,15 +1,21 @@
 <%@taglib uri="futurepagesApp" prefix="fpg"%>
 <%--@elvariable id="busca" type="java.lang.String"--%>
 <%--@elvariable id="turma" type="modules.escola.beans.Turma"--%>
-<%--@elvariable id="tipoFiltro" type="modules.escola.enums.TipoFiltroTurmaRepresentanteEnum"--%>
+<%--@elvariable id="tipoFiltro" type="modules.escola.enums.TipoFiltroTurmaEnum"--%>
 
 
 
 <script type="text/javascript">
-    function confirmaExclusao(id, codigo, nome) {
-        if(confirm("Deseja realmente apagar a turma \ncodigo:" + codigo + "\nnome: " + nome + " ")) {
-            document.location = '<fpg:contextPath/>/escola/Turma-delete?id=' + id;
+    function confirmaExclusao(id, codigo, nome, cursoIsNull) {
+
+        if(cursoIsNull){
+            alert("A turma" + codigo + "\nnome: " + nome + " possui um curso a ela. \nRetire o curso primeiramente!")
+        }else{
+	        if(confirm("Deseja realmente apagar a turma \ncodigo:" + codigo + "\nnome: " + nome + " ")) {
+	            document.location = '<fpg:contextPath/>/escola/Turma-delete?id=' + id;
+	        }
         }
+
     }
 </script>
 <script>
@@ -69,7 +75,8 @@
                    style="text-align: center;">
 	            <thead>
 	                <tr>
-	                    <th data-field="id">ID</th>
+		                <th data-field="curso">NOME DO CURSO</th>
+		                <th data-field="id">ID</th>
 	                    <th data-field="codigo">CÓDIGO</th>
 	                    <th data-field="nome">NOME</th>
 	                    <th data-field="tipo">TIPO</th>

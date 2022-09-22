@@ -4,6 +4,7 @@ import modules.escola.beans.Turma;
 import modules.escola.dao.TurmaDao;
 import org.futurepages.menta.core.validation.Validator;
 import org.futurepages.util.Is;
+import modules.escola.beans.Curso;
 
 public class TurmaValidator extends Validator {
 

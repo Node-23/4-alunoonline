@@ -25,7 +25,7 @@ public class ProfessorValidator extends Validator {
         if(foto==null){
             error("A foto 3x4 é obrigatória.");
         }else if(!foto.getContentType().equals("image/jpeg")){
-            error("A foto precisa ser JPG válida.");
+            error("A foto precisa ser JPEG válida.");
         }
     }
 }

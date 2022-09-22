@@ -45,6 +45,9 @@ public class Turma implements Serializable {
     @ManyToOne
     private Professor professor;
 
+    @ManyToOne
+    private Curso curso;
+
     public Turma() {
     }
 
@@ -130,5 +133,14 @@ public class Turma implements Serializable {
         this.setTipo(turmaForm.getTipo());
         this.setProfessor(turmaForm.getProfessor());
         this.setRepresentante(turmaForm.getRepresentante());
+        this.setCurso(turmaForm.getCurso());
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 }

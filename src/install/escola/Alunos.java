@@ -79,11 +79,11 @@ public class Alunos implements Installation {
 			turma.setRepresentante(aluno);
 		}
 		Dao.getInstance().save(aluno);
-		Path path = Paths.get(FileUtil.classRealPath(this.getClass()) + "res/alunos/" + aluno.getId() + ".jpg");
+		Path path = Paths.get(FileUtil.classRealPath(this.getClass()) + "res\\alunos\\" + aluno.getId() + ".jpg");
 		if(Files.notExists(path)){
-			FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res/Default.jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "/alunos/" + aluno.getId()+".jpg");
+			FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res\\Default.jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "\\alunos\\" + aluno.getId()+".jpg");
 		}else{
-			FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res/alunos/" + aluno.getId() + ".jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "/alunos/" + aluno.getId()+".jpg");
+			FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res\\alunos\\" + aluno.getId() + ".jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "\\alunos\\" + aluno.getId()+".jpg");
 		}
 	}
 }
