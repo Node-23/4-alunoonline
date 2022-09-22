@@ -4,8 +4,8 @@
 
 	<param name="PAGE_ENCODING"	value="UTF-8"/>
 
-	<param name="SCHEMA_GENERATION_TYPE"    value="export"/>
-	<param name="INSTALL_MODE"              value="on"/>
+<!--	<param name="SCHEMA_GENERATION_TYPE"    value="export"/>-->
+<!--	<param name="INSTALL_MODE"              value="on"/>-->
 
 	<param name="SCHEMA_GENERATION_TYPE"    value="update_beans"/>
 
