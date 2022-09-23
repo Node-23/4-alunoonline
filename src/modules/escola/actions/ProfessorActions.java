@@ -1,9 +1,11 @@
 package modules.escola.actions;
 
 import install.Resources;
+import modules.escola.beans.Aluno;
 import modules.escola.beans.Curso;
 import modules.escola.beans.Professor;
 import modules.escola.beans.Turma;
+import modules.escola.dao.AlunoDao;
 import modules.escola.dao.CursoDao;
 import modules.escola.dao.ProfessorDao;
 import modules.escola.dao.TurmaDao;
@@ -14,6 +16,7 @@ import org.futurepages.core.persistence.Dao;
 import org.futurepages.core.persistence.annotations.Transactional;
 import org.futurepages.enums.PathTypeEnum;
 import org.futurepages.menta.actions.CrudActions;
+import org.futurepages.util.Is;
 import org.futurepages.util.The;
 
 import java.io.File;
@@ -58,7 +61,7 @@ public class ProfessorActions extends CrudActions {
      */
     @Override
     protected void listObjects() {
-        explore(null);
+        explore(0, null);
     }
 
     /*
@@ -66,45 +69,43 @@ public class ProfessorActions extends CrudActions {
      *
      * É executado quando chamamos Professor-explore.jsp
      */
-    public String explore(String tipoFiltroName) {
+    public String explore(int cursoId, String tipoFiltroName) {
         TipoFiltroProfessorTurmaEnum tipoFiltro = null;
         try {
             tipoFiltro = TipoFiltroProfessorTurmaEnum.valueOf(tipoFiltroName);
         }catch (Exception ignored){}
-
+        Curso curso = Is.selected(cursoId)? Dao.getInstance().get(Curso.class, cursoId) : null;
         TipoFiltroProfessorTurmaEnum[] opcoesFiltroTurma = TipoFiltroProfessorTurmaEnum.values();
 
         // lista principal...
-        output("professores", ProfessoresFiltrados(tipoFiltro));
-
+        output("professores", ProfessoresFiltrados(curso, tipoFiltro));
         // dependencias de filtragem
         output("opcoesFiltroTurma", opcoesFiltroTurma);
         //filtros selecionados
         output("tipoFiltro", tipoFiltro); //filtro tipo turma realizado
+        output("cursos", CursoDao.listAll());
         return SUCCESS;
     }
 
     @SuppressWarnings("PointlessBooleanExpression")
-    public List<Professor> ProfessoresFiltrados(TipoFiltroProfessorTurmaEnum filtro){
-        List<Professor> professoresFiltrados = new ArrayList<>();
+    public List<Professor> ProfessoresFiltrados(Curso curso, TipoFiltroProfessorTurmaEnum filtro){
+        List<Professor> professoresFiltrados;
+        if(curso != null){
+            professoresFiltrados = ProfessorDao.professoresFiltradosPorCurso(curso);
+        }else{
+            professoresFiltrados = ProfessorDao.listAll();
+        }
+
         if(filtro == TipoFiltroProfessorTurmaEnum.PROFESSOR_COM_TURMA){
-            for (Professor professor: ProfessorDao.listAll()) {
-                if(professor.getTurmas().isEmpty() == false){
-                    professoresFiltrados.add(professor);
-                }
-            }
+            professoresFiltrados.removeIf(professor -> professor.getTurmas().isEmpty() == true);
             return professoresFiltrados;
         }
 
         if(filtro == TipoFiltroProfessorTurmaEnum.PROFESSOR_SEM_TURMA){
-            for (Professor professor: ProfessorDao.listAll()) {
-                if(professor.getTurmas().isEmpty() == true){
-                    professoresFiltrados.add(professor);
-                }
-            }
+            professoresFiltrados.removeIf(professor -> professor.getTurmas().isEmpty() == false);
             return professoresFiltrados;
         }
-        return ProfessorDao.listAll();
+        return professoresFiltrados;
     }
 
     /*

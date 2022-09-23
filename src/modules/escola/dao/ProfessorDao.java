@@ -23,7 +23,7 @@ public class ProfessorDao extends HQLProvider {
                 )));
     }
 
-    public static List<Professor> professoresFiltradosPorCurso(Professor professor, Curso cursoDoFiltro){
-        return Dao.getInstance().list((hql(Professor.class, ands( professor!=null? field("curso").equalsTo(cursoDoFiltro): ""),DEFAULT_ORDER)));
+    public static List<Professor> professoresFiltradosPorCurso(Curso cursoDoFiltro){
+        return Dao.getInstance().list((hql(Professor.class, ands( cursoDoFiltro!=null? field("curso").equalsTo(cursoDoFiltro): ""),DEFAULT_ORDER)));
     }
 }

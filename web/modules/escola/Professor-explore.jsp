@@ -1,7 +1,7 @@
 <%@taglib uri="futurepagesApp" prefix="fpg"%>
 <%--@elvariable id="professor" type="modules.escola.beans.Professor"--%>
 <%--@elvariable id="turma" type="modules.escola.beans.Turma"--%>
-<%--@elvariable id="turma" type="modules.escola.beans.Curso"--%>
+<%--@elvariable id="curso" type="modules.escola.beans.Curso"--%>
 <%--@elvariable id="tipoFiltro" type="modules.escola.enums.TipoFiltroProfessorTurmaEnum"--%>
 
 <script type="text/javascript">
@@ -25,13 +25,20 @@
     <br/>
     <br/>
     <form id="form-filtro-professores" method="get" action="<fpg:contextPath/>/escola/Professor-explore">
-<%--        <fpg:Select list="turmas"--%>
-<%--                    name="turmaId"--%>
-<%--                    selected="${turma!=null? turma.id : 0}"--%>
-<%--                    defaultText="- Filtrar por turma -"--%>
-<%--                    onchange="$('#form-filtro-professores').submit()"--%>
-<%--                    showAttr="nome"--%>
-<%--        />--%>
+        <fpg:Select list="cursos"
+                    name="curso"
+                    id="curso"
+                    selected="${curso!=null? curso.id : 0}"
+                    defaultText="Filtrar por curso"
+                    onchange="$('#form-filtro-professores').submit()"
+                    showAttr="nome"
+                    style="
+                            border-color: transparent transparent #fff transparent;
+                            width: 200 px;
+                            height: 35px;
+                            text-align: center;
+                          "
+        />
         <fpg:Select list="opcoesFiltroTurma"
                     showAttr="rotulo"
                     name="tipoFiltroName"
