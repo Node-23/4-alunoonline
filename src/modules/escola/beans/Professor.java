@@ -19,6 +19,8 @@ public class Professor implements Serializable {
     private String nomeCompleto;
     @OneToMany(mappedBy="professor")
     private List<Turma> turmas;
+    @ManyToOne
+    private Curso curso;
 
     public Professor(){}
 
@@ -33,9 +35,10 @@ public class Professor implements Serializable {
     public void setMatricula(String matricula) {this.matricula = matricula;}
     public String getNomeCompleto() {return nomeCompleto;}
     public void setNomeCompleto(String nomeCompleto) {this.nomeCompleto = nomeCompleto;}
-    public List<Turma> getTurmas() {return turmas;} //return AlunoDao.listByTurmaId(this.getId()); //TODO: Listar por id do professor
+    public List<Turma> getTurmas() {return turmas;}
     public void setTurmas(List<Turma> turmas) {this.turmas = turmas;}
-
+    public Curso getCurso() {return curso;}
+    public void setCurso(Curso curso) {this.curso = curso;}
     public String ListarTurmas(){
         if(this.turmas == null || this.turmas.isEmpty()){
             return "Sem turmas cadastradas!";
@@ -54,5 +57,6 @@ public class Professor implements Serializable {
     public void fillFromUpdateForm(Professor professor) {
         this.setNomeCompleto(professor.getNomeCompleto());
         this.setMatricula(professor.getMatricula());
+        this.setCurso(professor.getCurso());
     }
 }

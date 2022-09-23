@@ -32,6 +32,9 @@ public class Curso implements Serializable {
 	@OneToMany(mappedBy = "curso")
 	private List<Turma> turmas;
 
+	@OneToMany(mappedBy = "curso")
+	private List<Professor> professores;
+
 
 	public Curso() {
 	}
@@ -83,6 +86,8 @@ public class Curso implements Serializable {
 	public long getTotalTurmas() {
 		return CursoDao.getTotalTurmasPara(this);
 	}
+	public List<Professor> getProfessores() {return professores;}
+	public void setProfessores(List<Professor> professores) {this.professores = professores;}
 
 	public void fillFromForm(Curso cursoForm) {
 		this.setNome(cursoForm.getNome());

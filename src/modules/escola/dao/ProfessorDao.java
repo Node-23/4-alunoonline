@@ -1,12 +1,9 @@
 package modules.escola.dao;
 
-import modules.escola.beans.Aluno;
+import modules.escola.beans.Curso;
 import modules.escola.beans.Professor;
-import modules.escola.beans.Turma;
-import modules.escola.enums.TipoFiltroAlunoTurmaEnum;
 import org.futurepages.core.persistence.Dao;
 import org.futurepages.core.persistence.HQLProvider;
-import org.futurepages.util.Is;
 
 import java.util.List;
 
@@ -24,5 +21,9 @@ public class ProfessorDao extends HQLProvider {
                 ands(field("id").differentFrom(professor.getId()),
                         field("matricula").equalsTo(professor.getMatricula())
                 )));
+    }
+
+    public static List<Professor> professoresFiltradosPorCurso(Professor professor, Curso cursoDoFiltro){
+        return Dao.getInstance().list((hql(Professor.class, ands( professor!=null? field("curso").equalsTo(cursoDoFiltro): ""),DEFAULT_ORDER)));
     }
 }

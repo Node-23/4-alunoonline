@@ -29,7 +29,6 @@ public class TurmaActions extends CrudActions {
 		if (hasError()) {
 			output("turma", turma);
 		}
-
 		output("tipos", TipoTurmaDao.listAll());
 		output("alunos", AlunoDao.listByTurmaId(turma.getId()));
 		output("professores", ProfessorDao.listAll());
@@ -38,14 +37,14 @@ public class TurmaActions extends CrudActions {
 
     public String create() {
 		Turma turma = (Turma) input.getValue("turma");
-        validate(TurmaValidator.class).createOrUpdate(turma);
+        validate(TurmaValidator.class).createOrUpdate(turma, CREATE);
         Dao.getInstance().saveTransaction(turma);
         return success("Turma criada com sucesso.");
     }
 
 	public String update() {
 		Turma turmaForm = (Turma) input.getValue("turma");
-		validate(TurmaValidator.class).createOrUpdate(turmaForm);
+		validate(TurmaValidator.class).createOrUpdate(turmaForm, UPDATE);
 		Turma turmaDB = TurmaDao.getById(turmaForm.getId());
 		turmaDB.fillFromForm(turmaForm);
 
@@ -72,7 +71,7 @@ public class TurmaActions extends CrudActions {
 		output("turmas", TurmaDao.listByWithFilter(busca, tipoFiltroTurmaEnum));
 		output("busca",busca);
 
-		TipoFiltroTurmaEnum[] opcoesFiltroTurma = tipoFiltroTurmaEnum.values();
+		TipoFiltroTurmaEnum[] opcoesFiltroTurma = TipoFiltroTurmaEnum.values();
 		output("opcoesFiltroTurma", opcoesFiltroTurma);
 		return SUCCESS;
 	}

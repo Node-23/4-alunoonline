@@ -10,6 +10,7 @@
     <td style="text-align: center"><img src="${params.UPLOADS_URL_PATH}/professores/${professor.id}.jpg" style="width: 24px;" alt="Foto do professor"/></td>
     <td>${professor.nomeCompleto}</td>
     <td>${professor.matricula}</td>
+    <td>${professor.curso.nome}</td>
     <td>${professor.ListarTurmas()}</td>
     <td colspan="2">
         <a class="btn btn-warning" href="<fpg:contextPath/>/escola/Professor?type=update&id=${professor.id}">editar</a>
