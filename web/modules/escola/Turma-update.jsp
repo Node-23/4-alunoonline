@@ -33,7 +33,7 @@
         <fpg:Select list="alunos" name="representante" defaultText="Selecione..." defaultValue="0" selected="${turma.representante.id}" showAttr="nomeCompleto"/>
         <br />
         <br />
-        Curso: <fpg:Select list="cursos" defaultText="Selecione..." defaultValue="0" name="curso" selected="${curso.id}" showAttr="nome"/>
+        Curso: <fpg:Select id="curso" list="cursos" defaultText="Selecione..." defaultValue="0" name="curso" selected="${curso.id}" showAttr="nome"/>
         <br />
         <br />
             <div style="padding: 20px">

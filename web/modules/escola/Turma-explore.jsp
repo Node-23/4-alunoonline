@@ -7,15 +7,13 @@
 
 <script type="text/javascript">
     function confirmaExclusao(id, codigo, nome, cursoIsNull) {
-
         if(cursoIsNull){
-            alert("A turma" + codigo + "\nnome: " + nome + " possui um curso a ela. \nRetire o curso primeiramente!")
+			if(confirm("Deseja realmente apagar a turma \ncodigo:" + codigo + "\nnome: " + nome + " ")) {
+				document.location = '<fpg:contextPath/>/escola/Turma-delete?id=' + id;
+			}
         }else{
-	        if(confirm("Deseja realmente apagar a turma \ncodigo:" + codigo + "\nnome: " + nome + " ")) {
-	            document.location = '<fpg:contextPath/>/escola/Turma-delete?id=' + id;
-	        }
-        }
-
+			alert("A turma" + codigo + "\nnome: " + nome + " possui um curso a ela. \nRetire o curso primeiramente!")
+		}
     }
 </script>
 <script>
@@ -23,8 +21,8 @@
 		var html = []
 		html.push('<h5>Lista de Alunos:</h5>')
 		$.each(row, function (key, value) {
-			if(key == 'lista-alunos'){
-				if(value != ""){
+			if(key === 'lista-alunos'){
+				if(value !== ""){
 					html.push('<p>' + value + '</p>')
 				}else{
 					html.push('<p> Lista vazia. </p>')

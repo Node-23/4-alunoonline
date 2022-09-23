@@ -11,7 +11,7 @@
 
 	<param name="APP_HOST"    value="http://localhost:8080/alunoonline"/>
 
-	<param name="UPLOADS_REAL_PATH"   value="C:\wamp64\www\alunoonline_uploads"/>
+	<param name="UPLOADS_REAL_PATH"   value="/var/www/html/alunoonline_uploads"/>
 	<param name="UPLOADS_URL_PATH"    value="http://localhost/alunoonline_uploads"/>
 
 

@@ -1,5 +1,6 @@
 <%@taglib uri="futurepagesApp" prefix="fpg"%>
 <%--@elvariable id="professor" type="modules.escola.beans.Professor"--%>
+<%--@elvariable id="turma" type="modules.escola.beans.Curso"--%>
 
 <div>
     <h1 style="text-align: center;">Novo Professor</h1>
@@ -22,6 +23,18 @@
                 <label for="matricula">Matrícula</label>
                 <input class="form-control" id="matricula" name="matricula" value="${professor.matricula}" />
             </div>
+        </div>
+        <div style="padding: 20px">
+            <label for="curso">Curso</label>
+            <fpg:Select id="curso"
+                        list="cursos"
+                        name="curso"
+                        selected="${professor.curso!=null?professor.curso.id:0}"
+                        showAttr="nome"
+                        defaultText="- Sem curso -"
+                        defaultValue=""
+                        style="margin-top: 8px; margin-left: 5px;"
+            />
         </div>
         <div style="display: inline-flex">
             <div style="padding-left: 20px">

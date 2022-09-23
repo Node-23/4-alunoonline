@@ -1,6 +1,7 @@
 <%@taglib uri="futurepagesApp" prefix="fpg"%>
 <%--@elvariable id="professor" type="modules.escola.beans.Professor"--%>
 <%--@elvariable id="turma" type="modules.escola.beans.Turma"--%>
+<%--@elvariable id="turma" type="modules.escola.beans.Curso"--%>
 <%--@elvariable id="tipoFiltro" type="modules.escola.enums.TipoFiltroProfessorTurmaEnum"--%>
 
 <script type="text/javascript">
@@ -64,6 +65,7 @@
                         <td><strong>Foto</strong></td>
                         <td data-field="codigo"><strong>Nome</strong></td>
                         <td data-field="codigo"><strong>Matrícula</strong></td>
+                        <td data-field="codigo"><strong>Curso</strong></td>
                         <td data-field="codigo"><strong>Turmas</strong></td>
                         <td colspan="2" style="text-align: center;"><strong>Ações</strong></td>
                     </tr>

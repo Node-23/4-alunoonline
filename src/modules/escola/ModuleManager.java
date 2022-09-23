@@ -116,7 +116,9 @@ public class ModuleManager extends AbstractModuleManager {
             .on(SUCCESS, DELETE, chainIn("Turma?type=explore"));
 
         action("Professor", ProfessorActions.class)
+                //VOFilter deve sempre ficar antes dos PIFilter
                 .filter(new VOFilter("professor", Professor.class))
+                .filter(new PIFilter("professor","curso", Curso.class))
                 .on(CREATE, fwIn("Professor-create.page"))
                 .on(SUCCESS, CREATE, chainIn("Professor?type=explore"))
                 .on(ERROR,   CREATE, fwIn("Professor-create.page"))

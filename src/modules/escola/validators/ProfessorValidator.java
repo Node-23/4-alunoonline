@@ -22,6 +22,9 @@ public class ProfessorValidator extends Validator {
                 error("Já existe um professor com esta matrícula.");
             }
         }
+        if (Is.empty(professor.getCurso())) {
+            error("Escolha o curso que o professor faz parte.");
+        }
         if(foto==null){
             error("A foto 3x4 é obrigatória.");
         }else if(!foto.getContentType().equals("image/jpeg")){

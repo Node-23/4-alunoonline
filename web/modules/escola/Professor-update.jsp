@@ -28,6 +28,19 @@
                 </div>
             </div>
             <br>
+            <div style="padding: 20px">
+                <label for="curso">Curso</label>
+                <fpg:Select id="curso"
+                            list="cursos"
+                            name="curso"
+                            selected="${professor.curso!=null?professor.curso.id:0}"
+                            showAttr="nome"
+                            defaultText="- Sem curso -"
+                            defaultValue=""
+                            style="margin-top: 8px; margin-left: 5px;"
+                />
+            </div>
+            <br>
             <div style="display: inline-flex; padding: 10px">
                 <div style="padding-left: 5px">
                     Arquivo de Foto 3x4: <input type="file" name="foto"/>

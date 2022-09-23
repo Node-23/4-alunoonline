@@ -1,8 +1,10 @@
 package modules.escola.actions;
 
 import install.Resources;
+import modules.escola.beans.Curso;
 import modules.escola.beans.Professor;
 import modules.escola.beans.Turma;
+import modules.escola.dao.CursoDao;
 import modules.escola.dao.ProfessorDao;
 import modules.escola.dao.TurmaDao;
 import modules.escola.enums.TipoFiltroProfessorTurmaEnum;
@@ -33,6 +35,21 @@ public class ProfessorActions extends CrudActions {
         return success("Professor criado com sucesso");
     }
 
+    /*
+     * Ação de atualização do professor no arquivo  Professor-create.jsp
+     */
+    @Transactional
+    public String update() throws Exception {
+        Professor professor = (Professor) input.getValue("professor");
+        FileItem foto = (FileItem) input.getValue("foto");
+        validate(ProfessorValidator.class).createOrUpdate(professor, foto);
+        Professor professorDB = ProfessorDao.getById(professor.getId());
+        professorDB.fillFromUpdateForm(professor);
+        Dao.getInstance().updateTransaction(professorDB);
+
+        gravaFoto(professor,foto);
+        return success("Professor atualizado com sucesso");
+    }
 
     /*
      * listObjects() é a filtragem padrão da listagem.
@@ -90,23 +107,6 @@ public class ProfessorActions extends CrudActions {
         return ProfessorDao.listAll();
     }
 
-
-    /*
-     * Ação de atualização do professor no arquivo  Professor-create.jsp
-     */
-    @Transactional
-    public String update() throws Exception {
-        Professor professor = (Professor) input.getValue("professor");
-        FileItem foto = (FileItem) input.getValue("foto");
-        validate(ProfessorValidator.class).createOrUpdate(professor, foto);
-        Professor professorDB = ProfessorDao.getById(professor.getId());
-        professorDB.fillFromUpdateForm(professor);
-        Dao.getInstance().updateTransaction(professorDB);
-
-        gravaFoto(professor,foto);
-        return success("Professor atualizado com sucesso");
-    }
-
     /*
      * Chamado ao confirmar exclusão do professor
      * OBS: Antes de deletar o professor, remove a referência deste nas turmas
@@ -159,6 +159,8 @@ public class ProfessorActions extends CrudActions {
             fwdValue("professor");
         }
         List<Turma> turmas = TurmaDao.listAll();
+        List<Curso> cursos = CursoDao.listAll();
         output("turmas", turmas);
+        output("cursos", cursos);
     }
 }
