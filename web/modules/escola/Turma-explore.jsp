@@ -7,7 +7,6 @@
 
 <script type="text/javascript">
     function confirmaExclusao(id, codigo, nome, cursoIsNull) {
-		console.log(cursoIsNull)
         if(cursoIsNull){
 			if(confirm("Deseja realmente apagar a turma \ncodigo:" + codigo + "\nnome: " + nome + " ")) {
 				document.location = '<fpg:contextPath/>/escola/Turma-delete?id=' + id;
