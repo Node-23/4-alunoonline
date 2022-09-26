@@ -1212,6 +1212,7 @@
 
    <tag-file><name>aluno</name><path>/WEB-INF/tags/aluno.tag</path></tag-file>
    <tag-file><name>professor</name><path>/WEB-INF/tags/professor.tag</path></tag-file>
+   <tag-file><name>ajaxSelect</name><path>/WEB-INF/tags/resource/ajaxSelect.tag</path></tag-file>
    <tag-file><name>turma</name><path>/WEB-INF/tags/turma.tag</path></tag-file>
    <tag-file><name>curso</name><path>/WEB-INF/tags/curso.tag</path></tag-file>
 </taglib>

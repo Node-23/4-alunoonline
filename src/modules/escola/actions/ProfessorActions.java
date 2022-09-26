@@ -1,11 +1,9 @@
 package modules.escola.actions;
 
 import install.Resources;
-import modules.escola.beans.Aluno;
 import modules.escola.beans.Curso;
 import modules.escola.beans.Professor;
 import modules.escola.beans.Turma;
-import modules.escola.dao.AlunoDao;
 import modules.escola.dao.CursoDao;
 import modules.escola.dao.ProfessorDao;
 import modules.escola.dao.TurmaDao;
@@ -20,7 +18,6 @@ import org.futurepages.util.Is;
 import org.futurepages.util.The;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProfessorActions extends CrudActions {
