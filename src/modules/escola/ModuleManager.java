@@ -1,9 +1,6 @@
 package modules.escola;
 
-import modules.escola.actions.AlunoActions;
-import modules.escola.actions.ProfessorActions;
-import modules.escola.actions.CursoActions;
-import modules.escola.actions.TurmaActions;
+import modules.escola.actions.*;
 import modules.escola.beans.Aluno;
 import modules.escola.beans.Professor;
 import modules.escola.beans.TipoTurma;
@@ -75,6 +72,7 @@ public class ModuleManager extends AbstractModuleManager {
 
         // Configuração da Action "Turma"
         // TurmaActions recebe um apelido "Turma"
+        ajaxAction(CarregaProfessoresDoCurso.class);
         action("Turma", TurmaActions.class)
 
             //VOFilter: pega os valores dos campos do formulário da visão e
@@ -128,7 +126,6 @@ public class ModuleManager extends AbstractModuleManager {
                 .on(SUCCESS, UPDATE, chainIn("Professor?type=explore"))
                 .on(ERROR, UPDATE, fwIn("Professor-update.page"))
                 .on(SUCCESS, DELETE, chainIn("Professor?type=explore"));
-
 
         action("Curso", CursoActions.class)
 
