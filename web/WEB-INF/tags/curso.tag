@@ -10,9 +10,9 @@
 	<td>${curso.tipo.nome}</td>
 	<td>${curso.totalTurmas}</td>
 	<td>
-		<fpg:list value="curso.turma">
+		<fpg:list value="curso.turmas">
 			<fpg:loop var="turma">
-				<%--@elvariable id="aluno" type="modules.escola.beans.Turma"--%>
+				<%--@elvariable id="turma" type="modules.escola.beans.Turma"--%>
 				${turma.nome}<br/>
 			</fpg:loop>
 		</fpg:list>

@@ -1,6 +1,7 @@
 <%@taglib uri="futurepagesApp" prefix="fpg"%>
 <%--@elvariable id="busca" type="java.lang.String"--%>
-<%--@elvariable id="turma" type="modules.escola.beans.Curso"--%>
+<%--@elvariable id="turma" type="modules.escola.beans.Turma"--%>
+<%--@elvariable id="curso" type="modules.escola.beans.Curso"--%>
 
 
 
@@ -16,8 +17,8 @@
         var html = []
         html.push('<h5>Lista de Turmas:</h5>')
         $.each(row, function (key, value) {
-            if(key == 'lista-turmas'){
-                if(value != ""){
+            if(key === 'lista-turmas'){
+                if(value !== ""){
                     html.push('<p>' + value + '</p>')
                 }else{
                     html.push('<p> Lista vazia. </p>')
@@ -63,7 +64,8 @@
 					<th data-field="codigo">CÓDIGO</th>
 					<th data-field="nome">NOME</th>
 					<th data-field="tipo">TIPO</th>
-					<th data-field="total-alunos">TOTAL DE TURMAS</th>
+					<th data-field="total-turmas">TOTAL DE TURMAS</th>
+					<th data-field="lista-turmas" data-visible="false">LISTA DE TURMAS</th>
 					<th>Ações</th>
 				</tr>
 				</thead>
