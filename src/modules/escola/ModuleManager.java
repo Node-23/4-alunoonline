@@ -70,9 +70,9 @@ public class ModuleManager extends AbstractModuleManager {
 
 
 
+        ajaxAction(CarregaProfessoresDoCurso.class);
         // Configuração da Action "Turma"
         // TurmaActions recebe um apelido "Turma"
-        ajaxAction(CarregaProfessoresDoCurso.class);
         action("Turma", TurmaActions.class)
 
             //VOFilter: pega os valores dos campos do formulário da visão e

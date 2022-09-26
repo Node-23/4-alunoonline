@@ -28,19 +28,12 @@ public class TurmaValidator extends Validator {
             error("Já existe uma turma com esse representante.");
         }
 
-        if(turma.getProfessor() == null && type.equals(UPDATE)){
-            error("Selecione um professor");
-        }
-
         if(turma.getCurso() == null && type.equals(UPDATE)){
             error("Selecione um curso");
         }
-        if(turma.getProfessor().getCurso() == null){
-            error("Esse professor não possui um curso, adicione-o a um curso antes de adicioná-lo a uma turma");
-        }
 
-        if(turma.getProfessor().getCurso().getId() != turma.getCurso().getId()){
-            error("O professor precisa ser do mesmo curso que a turma!");
+        if(turma.getProfessor() == null && type.equals(UPDATE)){
+            error("Selecione um professor");
         }
 
 	    if(turma.getTipo()==null){
