@@ -1,6 +1,5 @@
 <%@taglib uri="futurepagesApp" prefix="fpg"%>
 <%--@elvariable id="turma" type="modules.escola.beans.Turma"--%>
-<%--@elvariable id="professor" type="modules.escola.beans.Professor"--%>
 
 <script type="text/javascript">
     function goBack() {
@@ -30,18 +29,6 @@
         <div class="form-group">
             <label for="tipo">Tipo</label>
             <fpg:Select id="tipo" list="tipos" defaultText="" name="tipo" selected="${turma.tipo.id}" showAttr="nome"/>
-        </div>
-        <div style="padding: 20px">
-            <label for="professor">Professor</label>
-            <fpg:Select id="professor"
-                        list="professores"
-                        name="professor"
-                        selected="${turma.professor!=null?turma.professor.id:0}"
-                        showAttr="nomeCompleto"
-                        defaultText="- Sem professor -"
-                        defaultValue=""
-                        style="margin-top: 8px; margin-left: 5px;"
-            />
         </div>
         <button type="submit" class="btn btn-primary" value="Salvar">Salvar</button>
     </form>

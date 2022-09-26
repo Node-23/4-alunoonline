@@ -4,11 +4,11 @@
 <%@attribute name="turma" type="modules.escola.beans.Turma"  required="true"%>
 
 <tr>
-	<td>${turma.curso.nome}</td>
 	<td>${turma.id}</td>
 	<td>${turma.codigo}</td>
 	<td>${turma.nome}</td>
 	<td>${turma.tipo.nome}</td>
+	<td>${turma.curso.nome}</td>
 	<td>${turma.professor.nomeCompleto}</td>
 	<td>${turma.totalAlunos}</td>
 	<td>${turma.representante.nomeCompleto}</td>

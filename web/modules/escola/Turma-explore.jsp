@@ -73,11 +73,11 @@
                    style="text-align: center;">
 	            <thead>
 	                <tr>
-		                <th data-field="curso">NOME DO CURSO</th>
 		                <th data-field="id">ID</th>
 	                    <th data-field="codigo">CÓDIGO</th>
 	                    <th data-field="nome">NOME</th>
 	                    <th data-field="tipo">TIPO</th>
+		                <th data-field="curso">NOME DO CURSO</th>
 						<th data-field="professor">PROFESSOR</th>
 	                    <th data-field="total-alunos">TOTAL DE ALUNOS</th>
 		                <th data-field="representante">REPRESENTANTE</th>
