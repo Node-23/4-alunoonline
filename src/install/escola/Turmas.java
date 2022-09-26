@@ -1,8 +1,10 @@
 package install.escola;
 
+import modules.escola.beans.Curso;
 import modules.escola.beans.Professor;
 import modules.escola.beans.TipoTurma;
 import modules.escola.beans.Turma;
+import modules.escola.dao.CursoDao;
 import modules.escola.dao.TipoTurmaDao;
 import org.apache.commons.lang.math.RandomUtils;
 import org.futurepages.core.install.Installation;
@@ -61,6 +63,7 @@ public class Turmas implements Installation {
         TipoTurma tipo = TipoTurmaDao.getById(RandomUtils.nextInt(totalTipos) + 1);
         turma.setTipo(tipo);
         turma.setProfessor(professor);
+        turma.setCurso(professor.getCurso());
         Dao.getInstance().save(turma);
     }
 }

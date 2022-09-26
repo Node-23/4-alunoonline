@@ -26,6 +26,6 @@ public class Resources extends Installer {
     }
 
 	public static String getUploadsPath(PathTypeEnum pathType){
-		return Apps.get(The.concat("UPLOADS_", pathType.name(), "_PATH"));
+			return Apps.get(The.concat("UPLOADS_", pathType.name(), "_PATH"));
 	}
 }

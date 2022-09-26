@@ -1,16 +1,25 @@
 package install.escola;
 
 import install.Resources;
+import modules.escola.beans.Curso;
 import modules.escola.beans.Professor;
+import modules.escola.beans.TipoCurso;
+import modules.escola.beans.TipoTurma;
+import modules.escola.dao.CursoDao;
+import modules.escola.dao.TipoCursoDao;
+import org.apache.commons.lang.math.RandomUtils;
 import org.futurepages.core.install.Installation;
 import org.futurepages.core.persistence.Dao;
 import org.futurepages.enums.PathTypeEnum;
 import org.futurepages.util.FileUtil;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static org.futurepages.core.persistence.HQLProvider.hql;
 
 public class Professores implements Installation {
     public Professores() {}
@@ -26,12 +35,16 @@ public class Professores implements Installation {
 
     private void installProfessor(String matricula, String nome) throws IOException {
         Professor professor = new Professor(matricula, nome);
+        int totalCursos = (int) Dao.getInstance().numRows(hql(Curso.class));
+        Curso curso = CursoDao.getById(RandomUtils.nextInt(totalCursos) + 1);
+        professor.setCurso(curso);
         Dao.getInstance().save(professor);
-        Path path = Paths.get(FileUtil.classRealPath(this.getClass()) + "res/professores/" + professor.getId() + ".jpg");
-        if(Files.notExists(path)){
-            FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res/Default.jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "/professores/" + professor.getId()+".jpg");
-        }else{
+        String path = FileUtil.classRealPath(this.getClass()) + "res/professores/" + professor.getId() + ".jpg";
+
+        if(new File(path).exists()){
             FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res/professores/" + professor.getId() + ".jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "/professores/" + professor.getId()+".jpg");
+        }else{
+            FileUtil.copy(FileUtil.classRealPath(this.getClass()) + "res/Default.jpg", Resources.getUploadsPath(PathTypeEnum.REAL) + "/professores/" + professor.getId()+".jpg");
         }
     }
 }
